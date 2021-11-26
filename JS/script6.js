@@ -1,8 +1,16 @@
-// !!!!!6. Написать метод getBase64FromUrl который конвертирует картинку в строку base64 (метод должен быть реализован с помощью Promise). Пример:
+// 6. Дана матрица (двумерный массив), нужно написать функцию, которая будет находить наименьшее значение, 
+//   после чего все нечетные значения в матрице будет умножать на это число.
 
-//  getBase64FromUrl('https://lh3.googleusercontent.com/i7cTyGnCwLIJhT1t2YpLW-zHt8ZKalgQiqfrYnZQl975-ygD_0mOXaYZMzekfKW_ydHRutDbNzeqpWoLkFR4Yx2Z2bgNj2XskKJrfw8')
-//  .then(console.log)
-//  .catch(console.error)
+// Исходная матрица:
+// [
+//  [5, 3, 6], 
+//  [7, 11, 2],
+//  [15, 9, 4]
+// ]
 
-// // Output
-// data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAACeCAIAAADL6SW3AAAAA3NCSVQICAjb4U/gAAAMGElEQVR4nO3dfZBdZX3A8d....
+// Результат выполнения функции:
+// [
+//  [10, 6, 6],
+//  [14, 22, 2],
+//  [30, 18, 4]
+// ]

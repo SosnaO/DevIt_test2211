@@ -1,11 +1,34 @@
-// 1.Напишите функцию deepEqual чтоб она проверяла что два объекта идентичны. Пример:
+// 1. Напишите функцию nodeChildCount которая получает на вход объект типа Node и возвращает число всех вложенных нодов,
+// аргумент deep указывать глубину подсчета если не указан то бесконечно.
+//     Пример:
 
-// function deepEqual(obj1, obj2) {
-//   return JSON.stringify(obj1) === JSON.stringify(obj2);
-// }
-// console.log(deepEqual({ name: "test" }, { name: "test" })); // true
-// console.log(deepEqual({ name: "test" }, { name: "test1" })); //  false
-// console.log(deepEqual({ name: "test" }, { name: "test", age: 10 })); //  false
+// const div = document.createElement("div");
+// const p = document.createElement("p");
+// const span = document.createElement("span");
+// p.appendChild(span);
+// div.appendChild(p);
 
+var nodeChildCount = function (node, deep = -1) {
+  var result = 0;
 
-container { width: 200px; height: 200px; border: 1px solid black; item ( width: 58px; height: 50px; background-color: blue; <dlv classa container div
+  for (var i = 0; i < node.childNodes.length; i++) {
+    result = result + 1;
+    let elem = node.childNodes[i];
+    if (elem.childNodes.length > 0) {
+      deep = deep - 1;
+      if (deep > 0) {
+        result = result + nodeChildCount(elem, deep);
+      } else if (deep < -1) {
+        result = result + nodeChildCount(elem);
+      }
+    }
+  }
+  return result;
+};
+const div = document.createElement("div");
+const p = document.createElement("p");
+const span = document.createElement("span");
+p.appendChild(span);
+div.appendChild(p);
+
+console.log(nodeChildCount(div));

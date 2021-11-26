@@ -1,20 +1,19 @@
+// 5. Есть функция primitiveMultiply, которая умножает числа, но случайным образом может выбрасывать исключения типа: NotificationException, ErrorException. Задача написать функцию обертку которая будет повторять вычисление при исключении NotificationException, но прекращать работу при исключениях ErrorException
+// Пример:
+// function NotificationException() {}
+// function ErrorException() {}
+// function primitiveMultiply(a, b) {
+//   const rand = Math.random();
+//   if (rand < 0.5) {
+//     return a * b;
+//   } else if(rand > 0.85) {
+//     throw new ErrorException()
+//   } else {
+//     throw new NotificationException()
+//   }
+// }
 
-// 5. Напишите метод arrayToObject который возвращать объект(использовать рекурсию). Пример:
-
-var arr = [['name', 'developer'], ['age', 5], ['skills', [['html',4], ['css', 5], ['js',5]]]];
-function arrayToObject(arr) {
-        if (Array.isArray(arr)) {
-            var result = {};
-            } else {
-         return arr;
-        }
-        for (let i = 0; i <= arr.length; i++){
-          let el = arr[i];
-          if (Array.isArray(el)) {
-             result[el[0]]=arrayToObject(el[1])
-        }
-    }
-         return result;
-}
-console.log(arrayToObject(arr)) 
-
+// function reliableMultiply(a, b) {
+//   // Ваш код
+// }
+// console.log(reliableMultiply(8, 8));
