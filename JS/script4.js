@@ -42,32 +42,32 @@ let testData3 = [
 ];
 
 const mapRules = [
-  ["name", "n", (value) => value.toLowerCase()],
+  ["name", "n", (value) => value.toLocaleLowerCase()],
   ["age", "a"],
 ];
 
-// [{"n":"vasya","a":20},{"n":"dima","a":34},{"n":"colya","a":46},{"n":"misha","a":16},{"n":"ashan","a":99},{"n":"rafshan","a":11}]
 const mapper = function (currentValue, index, array) {
-  //console.log("in current value", currentValue);
-  //console.log("in this", this);
   Rulles = this;
   element = currentValue;
   newelement = {};
-  //console.log(Rulles);
+
   for (let i = 0; i < Rulles.length; i++) {
     rulle = Rulles[i];
     if (rulle.length > 0) {
       attrname = rulle[0];
       if (attrname in element) {
-        value = element[attrname];
+        let value = element[attrname];
         if (rulle.length > 1) {
           let newattrname = rulle[1];
           if (rulle.length >= 2) {
             fun = rulle[2];
-            console.log(fun);
+
             try {
+              let value = element[attrname];
               eval(fun);
-              fun.call();
+              value = new Function(fun)(value);
+
+              (value) => value.toLowerCase();
             } catch (error) {
               console.error(error, fun);
             }
@@ -80,11 +80,9 @@ const mapper = function (currentValue, index, array) {
   currentValue = newelement;
   return newelement;
 };
-//console.log(testData3);
-//console.log(testData3.map(mapper, mapRules));
+
 t = testData3.map(mapper, mapRules);
 console.log(t);
 function tes(element, index, array) {
-  console.log(this); // 80
+  console.log(this);
 }
-//console.log(testData3.map(tes, mapRules));

@@ -31,21 +31,18 @@ function primitiveMultiply(a, b) {
     throw new NotificationException();
   }
 }
-console.log(primitiveMultiply(8, 8));
-
 function reliableMultiply(a, b) {
   try {
-    throw NotificationException(); // создание исключения
+    return primitiveMultiply(a, b);
   } catch (e) {
-    // инструкции для обработки ошибок
-    ErrorException(); // передать объект исключения обработчику ошибок
+    console.log(e, e.constructor.name);
+    if (e.constructor.name == "ErrorException") {
+      ErrorException(); 
+    } else if (e.constructor.name == "NotificationException") {
+      console.log("я тут");
+      return reliableMultiply(a, b);
+    }
   }
 
-  // try {
-  //   NotificationException();
-
-  // } catch {
-  //   ErrorException();
-  // }
 }
 console.log(reliableMultiply(8, 8));
